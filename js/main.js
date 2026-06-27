@@ -292,7 +292,7 @@ const coreProjects = [
   {
     id: "arch",
     category: ["java"],
-    image: "images/projects/arch.png",
+    image: "PATTERN.png",
     tags: ["Java", "OOP", "Design Patterns"],
     link: "https://github.com/Nouran-Omar",
   },
@@ -313,14 +313,14 @@ const coreProjects = [
   {
     id: "employee",
     category: ["java"],
-    image: "images/projects/employee.png",
+    image: "emp.png",
     tags: ["Java", "OOP"],
     link: "https://github.com/Nouran-Omar",
   },
   {
     id: "sentiment",
     category: ["python"],
-    image: "images/projects/sentiment.png",
+    image: "analyze_file_sentiment.png",
     tags: ["Python", "NLP"],
     link: "https://github.com/Nouran-Omar",
   },
