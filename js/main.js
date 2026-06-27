@@ -285,7 +285,7 @@ const coreProjects = [
   {
     id: "medix",
     category: ["react"],
-    image: "medix-pharmacy.png",
+    image: "medix-pharmacypng.png",
     tags: ["React", "TypeScript", "Tailwind CSS", "Zustand"],
     link: "https://github.com/Nouran-Omar/Medix-Pharmacy",
   },
