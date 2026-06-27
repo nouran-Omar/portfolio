@@ -263,8 +263,8 @@ const coreProjects = [
   {
     id: "pulsex",
     category: ["react", "dotnet"],
-    image: "images/projects/pulsex.png",
-    tags: ["React", "TypeScript", ".NET", "SQL Server"],
+    image: "Pulsx.png",
+    tags: ["React", "js", ".NET", "SQL Server"],
     link: "https://github.com/Nouran-Omar",
   },
   {
@@ -278,7 +278,7 @@ const coreProjects = [
   {
     id: "mabeet",
     category: ["dotnet", "vanilla-js"],
-    image: "images/projects/mabeet.png",
+    image: "MABEET.png",
     tags: [".NET", "C#", "SQL Server", "JWT", "Vanilla JS"],
     link: "https://github.com/Nouran-Omar/mabeet",
   },
