@@ -270,7 +270,7 @@ const coreProjects = [
   {
     id: "editor",
     category: ["react"],
-    image: "images/projects/editor.png",
+    image: "arabic-mathematical-editor.png",
     tags: ["React", "TypeScript", "Slate.js", "Tailwind CSS"],
     link: "https://github.com/Nouran-Omar/Arabic-mathematical-editor",
     demoLink: "#",
