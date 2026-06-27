@@ -285,7 +285,7 @@ const coreProjects = [
   {
     id: "medix",
     category: ["react"],
-    image: "images/projects/medix.png",
+    image: "medix-pharmacy.png",
     tags: ["React", "TypeScript", "Tailwind CSS", "Zustand"],
     link: "https://github.com/Nouran-Omar/Medix-Pharmacy",
   },
@@ -299,14 +299,14 @@ const coreProjects = [
   {
     id: "taskmaster",
     category: ["vanilla-js"],
-    image: "images/projects/taskmaster.png",
+    image: "TaskMaster.png",
     tags: ["Vanilla JS", "Tailwind CSS", "HTML5"],
     link: "https://github.com/Nouran-Omar",
   },
   {
     id: "luxe",
     category: ["react"],
-    image: "images/projects/luxe.png",
+    image: "LUXE.png",
     tags: ["React", "Framer Motion", "Tailwind CSS"],
     link: "https://github.com/Nouran-Omar",
   },
