@@ -1,320 +1,286 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eng. Nouran Omar | Portfolio</title>
-    <!-- Fonts & Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Animation & Slider Libraries -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eng. Nouran Omar | Senior Frontend Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
 
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <!-- Background Elements -->
-    <div id="particles-js"></div>
-    <div class="cursor-glow"></div>
+  <div id="particles-js"></div>
 
-    <!-- Preloader -->
-    <div class="preloader">
-      <div class="loader">
-        <div class="loader-square"></div>
-        <div class="loader-square"></div>
-        <div class="loader-square"></div>
-        <div class="loader-square"></div>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo" id="preloader-logo">NO</div>
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
+      <p class="preloader-text">Loading Portfolio...</p>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="glass-nav" id="navbar">
+    <div class="nav-container">
+
+      <a href="#home" class="logo-wrap" id="logo-wrap" aria-label="Home">
+        <div class="logo-monogram" id="logo-monogram"></div>
+        <div class="logo-info">
+          <span class="logo-name" id="logo-full-name">Eng. Nouran</span>
+          <span class="logo-role" id="logo-role-tag">Frontend Dev</span>
+        </div>
+      </a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home"         class="nav-link active" data-i18n="nav-home">Home</a></li>
+        <li><a href="#about"        class="nav-link"        data-i18n="nav-about">About</a></li>
+        <li><a href="#experience"   class="nav-link"        data-i18n="nav-experience">Experience</a></li>
+        <li><a href="#skills"       class="nav-link"        data-i18n="nav-skills">Skills</a></li>
+        <li><a href="#projects"     class="nav-link"        data-i18n="nav-projects">Projects</a></li>
+        <li><a href="#certificates" class="nav-link"        data-i18n="nav-certificates">Certificates</a></li>
+        <li><a href="#contact"      class="nav-link"        data-i18n="nav-contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="lang-toggle"  class="action-btn" aria-label="Toggle Language">
+          <i class="fas fa-globe"></i> <span id="lang-label">AR</span>
+        </button>
+        <button id="theme-toggle" class="action-btn theme-btn" aria-label="Toggle Theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-bg-blob blob-1"></div>
+    <div class="hero-bg-blob blob-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge"><span class="badge-dot"></span><span data-i18n="hero-badge">Available for Work</span></div>
+        <h1 class="hero-title">
+          <span class="hero-greeting" data-i18n="hero-greeting">Hi, I'm</span>
+          <span class="hero-name" id="hero-name">Eng. Nouran Omar</span>
+        </h1>
+        <div class="typewriter-wrap">
+          <span class="tw-prefix" data-i18n="tw-prefix">I build</span>&nbsp;
+          <span class="tw-text" id="tw-text"></span>
+          <span class="tw-cursor">|</span>
+        </div>
+        <p class="hero-desc" data-i18n="hero-desc">Creating flawless high-fidelity UI/UX experiences and high-performance applications with clean architecture.</p>
+
+        <div class="hero-stats">
+          <div class="hstat"><span class="hstat-n">3.67</span><span class="hstat-l" data-i18n="stat-gpa">GPA</span></div>
+          <div class="hstat-sep"></div>
+          <div class="hstat"><span class="hstat-n">4</span><span class="hstat-l" data-i18n="stat-years">Years CS</span></div>
+          <div class="hstat-sep"></div>
+          <div class="hstat"><span class="hstat-n">9+</span><span class="hstat-l" data-i18n="stat-proj">Projects</span></div>
+        </div>
+
+        <div class="hero-btns">
+          <a href="#contact"              class="btn btn-primary"   data-i18n="btn-hire"><i class="fas fa-paper-plane"></i> Hire Me</a>
+          <a href="#projects"             class="btn btn-outline"   data-i18n="btn-portfolio"><i class="fas fa-eye"></i> Portfolio</a>
+          <a href="Nouran Omar Hammad.pdf" class="btn btn-ghost"    target="_blank" data-i18n="btn-cv"><i class="fas fa-download"></i> CV</a>
+        </div>
+
+        <div class="hero-socials">
+          <a href="https://github.com/nouran-Omar" target="_blank" class="soc-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#"                              target="_blank" class="soc-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:nouranomarhammmad@gmail.com"            class="soc-btn" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <div class="hero-image-side">
+        <div class="img-frame" id="img-frame">
+          <div class="img-glow-orb"></div>
+          <div class="img-ring r1"></div>
+          <div class="img-ring r2"></div>
+          <div class="img-ring r3"></div>
+          <div class="img-orbit-dot od-a"></div>
+          <div class="img-orbit-dot od-b"></div>
+          <div class="img-inner">
+            <img src="profile.jpg" alt="Eng. Nouran Omar" class="profile-img" loading="eager" />
+            <div class="img-overlay-blend"></div>
+            <div class="img-shine"></div>
+          </div>
+          <div class="float-chip chip-a"><i class="fab fa-react"></i> React</div>
+          <div class="float-chip chip-b"><i class="fas fa-layer-group"></i> .NET</div>
+          <div class="float-chip chip-c"><span style="color:#a080e0;font-weight:900">TS</span></div>
+          <div class="float-chip chip-d"><i class="fa-brands fa-git-alt"></i> Git</div>
+          <div class="float-status">
+            <span class="badge-dot"></span>
+            <span data-i18n="hero-badge">Available for Work</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Premium Navbar -->
-    <nav class="glass-nav">
-      <div class="nav-container">
-        <div class="logo">
-          <span class="logo-text">Eng. Nouran</span>
-          <div class="logo-dot"></div>
-        </div>
-        <ul class="nav-links">
-          <li>
-            <a href="#home" class="nav-link active" data-i18n="nav-home"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a href="#about" class="nav-link" data-i18n="nav-about">About</a>
-          </li>
-          <li>
-            <a href="#experience" class="nav-link" data-i18n="nav-experience"
-              >Experience</a
-            >
-          </li>
-          <li>
-            <a href="#skills" class="nav-link" data-i18n="nav-skills">Skills</a>
-          </li>
-          <li>
-            <a href="#projects" class="nav-link" data-i18n="nav-projects"
-              >Projects</a
-            >
-          </li>
-          <li>
-            <a href="#certificates" class="nav-link" data-i18n="nav-certificates"
-              >Certificates</a
-            >
-          </li>
-          <li>
-            <a href="#contact" class="nav-link" data-i18n="nav-contact"
-              >Contact</a
-            >
-          </li>
-        </ul>
-        <div class="nav-actions">
-          <button id="lang-toggle" class="action-btn">AR</button>
-          <button id="theme-toggle" class="action-btn">
-            <i class="fas fa-moon"></i>
-          </button>
-          <div class="hamburger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <a href="#about" class="scroll-hint" aria-label="Scroll down">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    </a>
+  </section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title" data-i18n="hero-title">
-            Hi, I'm Eng. Nouran Omar
-          </h1>
-          <h2 class="hero-subtitle" data-i18n="hero-subtitle">
-            Senior Frontend Developer
-          </h2>
-          <p class="hero-description" data-i18n="hero-desc">
-            Creating flawless high-fidelity UI/UX experiences and
-            high-performance applications with clean architecture.
-          </p>
-          <div class="hero-buttons">
-            <a
-              href="#contact"
-              class="btn btn-primary pulse"
-              data-i18n="btn-hire"
-              >Hire Me</a
-            >
-            <a
-              href="#projects"
-              class="btn btn-secondary"
-              data-i18n="btn-portfolio"
-              >View Portfolio</a
-            >
-            <a
-              href="Nouran_Omar_CV.pdf"
-              target="_blank"
-              class="btn btn-secondary"
-              data-i18n="btn-cv"
-              >Download CV</a
-            >
-          </div>
-        </div>
-        <div class="hero-image">
-          <div class="image-wrapper">
-            <div class="glow-bg"></div>
-            <img src="profile.jpg" alt="Nouran Omar" class="profile-img" />
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about section">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-tag" data-i18n="about-tag">Who I Am</p>
+      <h2 class="section-title"><span data-i18n="about-head-1">About</span> <span class="accent-w" data-i18n="about-head-2">Me</span></h2>
+      <div class="section-divider"></div>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about section">
-      <div class="section-header" data-aos="fade-up">
-        <h2 class="section-title">
-          <span data-i18n="about-head-1">About</span>
-          <span data-i18n="about-head-2">Me</span>
-        </h2>
-        <div class="section-divider"></div>
+    <div class="about-grid">
+      <div class="about-left" data-aos="fade-right">
+        <p class="about-desc" data-i18n="about-text-p">A passionate software engineer...</p>
+
+        <div class="about-facts">
+          <div class="fact-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-graduation-cap"></i><span data-i18n="fact-1">EELU — Class of 2026</span></div>
+          <div class="fact-item" data-aos="fade-up" data-aos-delay="150"><i class="fas fa-code"></i><span data-i18n="fact-2">Full-Stack Developer</span></div>
+          <div class="fact-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-language"></i><span data-i18n="fact-3">Arabic &amp; English</span></div>
+          <div class="fact-item" data-aos="fade-up" data-aos-delay="250"><i class="fas fa-map-marker-alt"></i><span data-i18n="fact-4">Egypt — Remote Ready</span></div>
+        </div>
       </div>
-      <div class="about-content">
-        <div class="about-text" data-aos="fade-up">
-          <p class="about-description" data-i18n="about-text-p">
-            Computer Science Graduate (Class of 2026) from EELU with a
-            Cumulative GPA of 3.67. Specialized in modern front-end technologies
-            and clean backend services.
-          </p>
-          <div class="metrics-grid" data-aos="fade-up" data-aos-delay="100">
-            <div class="metric-circle-wrapper">
-              <svg class="metric-svg" viewBox="0 0 120 120">
-                <circle class="metric-bg-circle" cx="60" cy="60" r="54" />
-                <circle class="metric-value-circle gpa-circle" cx="60" cy="60" r="54" />
-              </svg>
-              <div class="metric-text">
-                <h3>3.67</h3>
-                <p data-i18n="metric-gpa">Cumulative GPA</p>
-              </div>
-            </div>
-            <div class="metric-circle-wrapper">
-              <svg class="metric-svg" viewBox="0 0 120 120">
-                <circle class="metric-bg-circle" cx="60" cy="60" r="54" />
-                <circle
-                  class="metric-value-circle aplus-circle"
-                  cx="60"
-                  cy="60"
-                  r="54"
-                />
-              </svg>
-              <div class="metric-text">
-                <h3>A+</h3>
-                <p data-i18n="metric-grad">Graduation Project</p>
-              </div>
+
+      <div class="about-right" data-aos="fade-left">
+        <div class="achievement-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="ach-row">
+            <div class="ach-figure">3.67</div>
+            <div class="ach-divider"></div>
+            <div class="ach-copy">
+              <span class="ach-label" data-i18n="metric-gpa">Cumulative GPA</span>
+              <span class="ach-sub" data-i18n="metric-gpa-sub">Out of 4.0 — EELU</span>
             </div>
           </div>
+          <div class="ach-row">
+            <div class="ach-figure">A+</div>
+            <div class="ach-divider"></div>
+            <div class="ach-copy">
+              <span class="ach-label" data-i18n="metric-grad">Graduation Project</span>
+              <span class="ach-sub" data-i18n="metric-grad-sub">Top distinction grade</span>
+            </div>
+          </div>
+          <div class="ach-badge-row">
+            <span class="ach-pulse"></span>
+            <span class="ach-sub" data-i18n="metric-status">Class of 2026 — EELU</span>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience section">
-      <div class="section-header" data-aos="fade-up">
-        <h2 class="section-title">
-          <span data-i18n="experience-head-1">My</span>
-          <span data-i18n="experience-head-2">Experience</span>
-        </h2>
-        <div class="section-divider"></div>
-      </div>
-      <div class="timeline" id="experience-timeline" data-aos="fade-up">
-        <!-- Timeline items are rendered here from main.js -->
-      </div>
-    </section>
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience" class="experience section">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-tag" data-i18n="exp-tag">Career Path</p>
+      <h2 class="section-title"><span data-i18n="experience-head-1">My</span> <span class="accent-w" data-i18n="experience-head-2">Experience</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <!-- New Presentation Card Layout for Timeline -->
+    <div class="experience-card-grid" id="experience-timeline"></div>
+  </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
-      <div class="section-header" data-aos="fade-up">
-        <h2 class="section-title">
-          <span data-i18n="skills-head-1">My</span>
-          <span data-i18n="skills-head-2">Skills</span>
-        </h2>
-        <div class="section-divider"></div>
-      </div>
-      <div class="skills-container" data-aos="fade-up">
-        <!-- Dynamic Skills are rendered here from main.js -->
-      </div>
-    </section>
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="skills section">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-tag" data-i18n="skills-tag">What I Know</p>
+      <h2 class="section-title"><span data-i18n="skills-head-1">My</span> <span class="accent-w" data-i18n="skills-head-2">Skills</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-container" data-aos="fade-up"></div>
+  </section>
 
-    <!-- Projects Section (Slider & Filter Grid Combo) -->
-    <section id="projects" class="projects section">
-      <div class="section-header" data-aos="fade-up">
-        <h2 class="section-title">
-          <span data-i18n="proj-head-1">Featured</span>
-          <span data-i18n="proj-head-2">Projects</span>
-        </h2>
-        <div class="section-divider"></div>
-      </div>
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="projects section">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-tag" data-i18n="proj-tag">What I Built</p>
+      <h2 class="section-title"><span data-i18n="proj-head-1">Featured</span> <span class="accent-w" data-i18n="proj-head-2">Projects</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="projects-list" id="projects-list"></div>
+  </section>
 
-      <!-- Projects List -->
-      <div
-        class="projects-list"
-        id="projects-list"
-        data-aos="fade-up"
-        data-aos-delay="200"
-      ></div>
-    </section>
+  <!-- ===== CERTIFICATES ===== -->
+  <section id="certificates" class="certificates section">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-tag" data-i18n="certs-tag">Achievements</p>
+      <h2 class="section-title"><span data-i18n="certs-head-1">My</span> <span class="accent-w" data-i18n="certs-head-2">Certificates</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="certificates-container" id="certificates-container"></div>
+  </section>
 
-    <!-- Certificates Section -->
-    <section id="certificates" class="certificates section">
-      <div class="section-header" data-aos="fade-up">
-        <h2 class="section-title">
-          <span data-i18n="certs-head-1">My</span>
-          <span data-i18n="certs-head-2">Certificates</span>
-        </h2>
-        <div class="section-divider"></div>
-      </div>
-      <div
-        class="certificates-container"
-        id="certificates-container"
-        data-aos="fade-up"
-      ></div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-      <div class="section-header" data-aos="fade-up">
-        <h2 class="section-title">
-          <span data-i18n="contact-head-1">Get In</span>
-          <span data-i18n="contact-head-2">Touch</span>
-        </h2>
-        <div class="section-divider"></div>
-      </div>
-      <div class="contact-container">
-        <form id="contact-form" class="form" data-aos="fade-up">
-          <input
-            type="text"
-            class="form-input"
-            name="from_name"
-            data-i18n-placeholder="form-placeholder-name"
-            placeholder="Your Name"
-            required
-          />
-          <input
-            type="email"
-            class="form-input"
-            name="from_email"
-            data-i18n-placeholder="form-placeholder-email"
-            placeholder="Your Email"
-            required
-          />
-          <textarea
-            class="form-input"
-            name="message"
-            data-i18n-placeholder="form-placeholder-message"
-            placeholder="Your Message"
-            rows="5"
-            required
-          ></textarea>
-          <button type="submit" class="btn btn-primary" data-i18n="btn-send">
-            Send Message
-          </button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-socials">
-          <a
-            href="https://github.com/nouran-Omar"
-            target="_blank"
-            class="social-link"
-            aria-label="GitHub"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a href="#" target="_blank" class="social-link" aria-label="LinkedIn"
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact section">
+    <div class="section-header" data-aos="fade-up">
+      <p class="sec-tag" data-i18n="contact-tag">Let's Talk</p>
+      <h2 class="section-title"><span data-i18n="contact-head-1">Get In</span> <span class="accent-w" data-i18n="contact-head-2">Touch</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-col" data-aos="fade-right">
+        <div class="cinfo-item">
+          <div class="cinfo-icon"><i class="fas fa-envelope"></i></div>
+          <div><p class="cinfo-label" data-i18n="ci-email-label">Email</p><a href="mailto:nouranomarhammmad@gmail.com" class="cinfo-val">nouranomarhammmad@gmail.com</a></div>
         </div>
-        <p class="copyright" data-i18n="footer-copyright">
-          &copy; <span id="current-year"></span> Eng. Nouran Omar. All Rights
-          Reserved.
-        </p>
+        <div class="cinfo-item">
+          <div class="cinfo-icon"><i class="fab fa-github"></i></div>
+          <div><p class="cinfo-label" data-i18n="ci-gh-label">GitHub</p><a href="https://github.com/nouran-Omar" target="_blank" class="cinfo-val">github.com/nouran-Omar</a></div>
+        </div>
+        <div class="cinfo-item">
+          <div class="cinfo-icon"><i class="fab fa-linkedin-in"></i></div>
+          <div><p class="cinfo-label" data-i18n="ci-li-label">LinkedIn</p><a href="#" target="_blank" class="cinfo-val" data-i18n="ci-li-val">Connect with me</a></div>
+        </div>
       </div>
-    </footer>
 
-    <!-- CDNs Links -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+      <form id="contact-form" class="contact-form" data-aos="fade-left">
+        <div class="form-group">
+          <label class="form-label" data-i18n="form-label-name">Your Name</label>
+          <input type="text"  class="form-input" name="from_name"  data-i18n-placeholder="form-placeholder-name"    placeholder="Your Name"    required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form-label-email">Your Email</label>
+          <input type="email" class="form-input" name="from_email" data-i18n-placeholder="form-placeholder-email"   placeholder="Your Email"   required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="form-label-msg">Message</label>
+          <textarea class="form-input" name="message" rows="5" data-i18n-placeholder="form-placeholder-message" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full" data-i18n="btn-send">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo-text" id="footer-logo-text">Eng. Nouran</span>
+        <p class="footer-tagline" data-i18n="footer-tagline">Building the web, one pixel at a time.</p>
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/nouran-Omar" target="_blank" class="soc-btn" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#"                              target="_blank" class="soc-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:nouranomarhammmad@gmail.com"            class="soc-btn" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">&copy; <span id="current-year"></span> <span data-i18n="footer-copyright">Eng. Nouran Omar. All Rights Reserved.</span></p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
 </html>
