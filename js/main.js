@@ -1,5 +1,3 @@
-
-
 // ============ TRANSLATIONS ============
 const dictionary = {
   en: {
@@ -200,48 +198,109 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive:true });
   }
 
-  /* ---- MOBILE MENU ---- */
-  function initMobileMenu() {
-    const ham  = document.getElementById("hamburger");
-    const menu = document.getElementById("nav-links");
-    if(!ham || !menu) return;
-    ham.addEventListener("click", () => {
-      ham.classList.toggle("open");
-      menu.classList.toggle("open");
-      document.body.style.overflow = menu.classList.contains("open") ? "hidden" : "";
+
+  /* ---- BOTTOM NAV (Mobile) ---- */
+  function initBottomNav() {
+    const bottomNav  = document.getElementById("bottom-nav");
+    const moreBtn    = document.getElementById("bnav-more-btn");
+    const drawer     = document.getElementById("bnav-drawer");
+    const backdrop   = document.getElementById("bnav-backdrop");
+    if(!bottomNav) return;
+
+    // Toggle drawer
+    function openDrawer() {
+      drawer.classList.add("open");
+      backdrop.classList.add("open");
+      moreBtn.classList.add("open");
+    }
+    function closeDrawer() {
+      drawer.classList.remove("open");
+      backdrop.classList.remove("open");
+      moreBtn.classList.remove("open");
+    }
+
+    if(moreBtn) moreBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      drawer.classList.contains("open") ? closeDrawer() : openDrawer();
     });
-    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
-      ham.classList.remove("open");
-      menu.classList.remove("open");
-      document.body.style.overflow = "";
-    }));
+
+    if(backdrop) backdrop.addEventListener("click", closeDrawer);
+
+    // Highlight active section on scroll
+    const sections = ["home","about","experience","skills","projects","certificates","contact"];
+    function updateActive() {
+      const scrollY = window.scrollY + window.innerHeight * 0.4;
+      let current = "home";
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if(el && el.offsetTop <= scrollY) current = id;
+      });
+
+      // Bottom nav items
+      bottomNav.querySelectorAll(".bnav-item[data-section]").forEach(item => {
+        item.classList.toggle("active", item.dataset.section === current);
+      });
+      // Drawer items
+      if(drawer) drawer.querySelectorAll(".bnav-drawer-item[data-section]").forEach(item => {
+        item.classList.toggle("active", item.dataset.section === current);
+      });
+    }
+
+    window.addEventListener("scroll", updateActive, { passive:true });
+    updateActive();
+
+    // Close drawer on nav click
+    document.querySelectorAll(".bnav-item, .bnav-drawer-item").forEach(item => {
+      item.addEventListener("click", () => {
+        closeDrawer();
+      });
+    });
   }
 
-  /* ---- THEME ---- */
+  /* ---- THEME MANAGEMENT ---- */
   function initTheme() {
-    const btn = document.getElementById("theme-toggle");
+    const btnDesktop = document.getElementById("theme-toggle");
+    const btnMobile  = document.getElementById("theme-toggle-mob");
+    
     applyTheme(state.theme);
-    btn && btn.addEventListener("click", () => {
-      state.theme = state.theme === "dark" ? "light" : "dark";
-      applyTheme(state.theme);
+    
+    [btnDesktop, btnMobile].forEach(btn => {
+      if(btn) {
+        btn.addEventListener("click", () => {
+          state.theme = state.theme === "dark" ? "light" : "dark";
+          applyTheme(state.theme);
+        });
+      }
     });
   }
+  
   function applyTheme(t) {
     document.documentElement.setAttribute("data-theme", t);
     localStorage.setItem("theme", t);
-    const btn = document.getElementById("theme-toggle");
-    if(btn) btn.innerHTML = t === "dark" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    const btnDesktop = document.getElementById("theme-toggle");
+    const btnMobile  = document.getElementById("theme-toggle-mob");
+    const content = t === "dark" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    
+    if(btnDesktop) btnDesktop.innerHTML = content;
+    if(btnMobile) btnMobile.innerHTML = content;
   }
 
-  /* ---- LANGUAGE ---- */
+  /* ---- LANGUAGE MANAGEMENT ---- */
   function initLang() {
-    const btn = document.getElementById("lang-toggle");
+    const btnDesktop = document.getElementById("lang-toggle");
+    const btnMobile  = document.getElementById("theme-toggle-mob"); // Targeting mobile structure list event
+    const btnMobileActual = document.getElementById("lang-toggle-mob");
+    
     applyLang(state.lang);
-    btn && btn.addEventListener("click", () => {
-      state.lang = state.lang === "en" ? "ar" : "en";
-      applyLang(state.lang);
-      // Rerender specific dynamic cards to switch animation and layout fluidly
-      renderExperience();
+    
+    [btnDesktop, btnMobileActual].forEach(btn => {
+      if(btn) {
+        btn.addEventListener("click", () => {
+          state.lang = state.lang === "en" ? "ar" : "en";
+          applyLang(state.lang);
+          renderExperience();
+        });
+      }
     });
   }
 
@@ -250,8 +309,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
     localStorage.setItem("lang", lang);
 
-    const lbl = document.getElementById("lang-label");
-    if(lbl) lbl.textContent = lang === "en" ? "AR" : "EN";
+    const lblDesktop = document.getElementById("lang-label");
+    const lblMobile  = document.querySelector(".lang-label-mob");
+    const targetLabel = lang === "en" ? "AR" : "EN";
+    
+    if(lblDesktop) lblDesktop.textContent = targetLabel;
+    if(lblMobile) lblMobile.textContent = targetLabel;
 
     buildLogo(lang);
 
@@ -352,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `).join("");
   }
 
-  /* ---- RENDER INTERACTIVE PRESENTATION TIMELINE CARDS ---- */
+  /* ---- RENDER ASYMMETRIC EXPERIENCES ---- */
   let card_observer = null;
   function renderExperience() {
     const tl = document.getElementById("experience-timeline");
@@ -361,7 +424,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const isRtl = document.documentElement.getAttribute("dir") === "rtl";
     
     tl.innerHTML = experienceData.map((item, i) => {
-      // Dynamic presentation flow direction configuration based on language direction setting
       const flowAos = isRtl ? (i % 2 === 0 ? "fade-left" : "fade-right") : (i % 2 === 0 ? "fade-right" : "fade-left");
       
       return `
@@ -382,12 +444,11 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `}).join("");
     
-    // retrigger translations for newly injected inner dynamic content elements
     applyLang(state.lang);
     initExperienceTypeReveal();
   }
 
-  /* ---- TYPING / TERMINAL BOOT REVEAL FOR EXPERIENCE CARDS ---- */
+  /* ---- TERMINAL BOOT REVEAL ---- */
   function initExperienceTypeReveal() {
     const cards = document.querySelectorAll(".dev-timeline-card");
     if(!cards.length) return;
@@ -417,7 +478,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const cursor = document.createElement("span");
         cursor.className = "typing-cursor";
 
-        const speed = 14; // ms per character — quick code-typing feel
+        const speed = 14; 
         const startDelay = 280;
 
         setTimeout(function typeStep() {
@@ -435,7 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         card_observer.unobserve(card);
       });
-    }, { threshold:0.35, rootMargin:"0px 0px -10% 0px" });
+    }, { threshold:0.25, rootMargin:"0px 0px -5% 0px" });
 
     cards.forEach(card => card_observer.observe(card));
   }
@@ -537,7 +598,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ---- 3D FLOATING HERO IMAGE PARALLAX EFFECT ---- */
+  /* ---- 3D HERO IMAGE PARALLAX EFFECT ---- */
   function initHeroParallax() {
     const frame = document.querySelector('.img-frame');
     const side  = document.querySelector('.hero-image-side');
@@ -547,10 +608,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function handleMove(e) {
       const rect = side.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;   // 0 -> 1 across the frame area
+      const px = (e.clientX - rect.left) / rect.width;   
       const py = (e.clientY - rect.top) / rect.height;
-      const x = (px - 0.5) * 22;   // rotationY range
-      const y = (py - 0.5) * 22;   // rotationX range
+      const x = (px - 0.5) * 22;   
+      const y = (py - 0.5) * 22;   
 
       if (raf) return;
       raf = requestAnimationFrame(() => {
@@ -589,7 +650,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach(s => obs.observe(s));
   }
 
-  /* ---- GSAP HERO ANIMATIONS ---- */
+  /* ---- GSAP ANIMATIONS ---- */
   function initAnimations() {
     if(typeof gsap === "undefined") return;
     const tl = gsap.timeline({ defaults:{ ease:"power4.out" } });
@@ -633,7 +694,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============ INIT ============
   initPreloader();
   initNavbar();
-  initMobileMenu();
+  initBottomNav();
   initTheme();
   renderSkills();
   renderExperience();

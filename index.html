@@ -36,6 +36,7 @@
         </div>
       </a>
 
+      <!-- Desktop Links -->
       <ul class="nav-links" id="nav-links">
         <li><a href="#home"         class="nav-link active" data-i18n="nav-home">Home</a></li>
         <li><a href="#about"        class="nav-link"        data-i18n="nav-about">About</a></li>
@@ -44,6 +45,16 @@
         <li><a href="#projects"     class="nav-link"        data-i18n="nav-projects">Projects</a></li>
         <li><a href="#certificates" class="nav-link"        data-i18n="nav-certificates">Certificates</a></li>
         <li><a href="#contact"      class="nav-link"        data-i18n="nav-contact">Contact</a></li>
+        
+        <!-- Mobile View Actions Container (Injected via CSS for structural integrity) -->
+        <li class="mobile-actions-li">
+          <button id="lang-toggle-mob" class="action-btn" aria-label="Toggle Language">
+            <i class="fas fa-globe"></i> <span class="lang-label-mob">AR</span>
+          </button>
+          <button id="theme-toggle-mob" class="action-btn theme-btn" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
       </ul>
 
       <div class="nav-actions">
@@ -53,11 +64,41 @@
         <button id="theme-toggle" class="action-btn theme-btn" aria-label="Toggle Theme">
           <i class="fas fa-moon"></i>
         </button>
-        <button class="hamburger" id="hamburger" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </div>
+  </nav>
+
+  <!-- ===== BOTTOM NAV (Mobile) ===== -->
+  <div class="bnav-backdrop" id="bnav-backdrop"></div>
+
+  <!-- Drawer for extra links -->
+  <div class="bnav-drawer" id="bnav-drawer">
+    <a href="#skills"       class="bnav-drawer-item" data-section="skills"><i class="fas fa-code"></i><span data-i18n="nav-skills">Skills</span></a>
+    <a href="#projects"     class="bnav-drawer-item" data-section="projects"><i class="fas fa-layer-group"></i><span data-i18n="nav-projects">Projects</span></a>
+    <a href="#certificates" class="bnav-drawer-item" data-section="certificates"><i class="fas fa-certificate"></i><span data-i18n="nav-certificates">Certificates</span></a>
+    <a href="#experience"   class="bnav-drawer-item" data-section="experience"><i class="fas fa-briefcase"></i><span data-i18n="nav-experience">Experience</span></a>
+  </div>
+
+  <nav class="bottom-nav" id="bottom-nav" aria-label="Mobile navigation">
+    <a href="#home"    class="bnav-item active" data-section="home">
+      <div class="bnav-pill"></div>
+      <i class="fas fa-house bnav-icon"></i>
+      <span class="bnav-label" data-i18n="nav-home">Home</span>
+    </a>
+    <a href="#about"   class="bnav-item" data-section="about">
+      <div class="bnav-pill"></div>
+      <i class="fas fa-user bnav-icon"></i>
+      <span class="bnav-label" data-i18n="nav-about">About</span>
+    </a>
+    <a href="#contact" class="bnav-item" data-section="contact">
+      <div class="bnav-pill"></div>
+      <i class="fas fa-paper-plane bnav-icon"></i>
+      <span class="bnav-label" data-i18n="nav-contact">Contact</span>
+    </a>
+    <button class="bnav-more-btn" id="bnav-more-btn" aria-label="More sections">
+      <i class="fas fa-plus bnav-icon"></i>
+      <span class="bnav-label">More</span>
+    </button>
   </nav>
 
   <!-- ===== HERO ===== -->
@@ -184,7 +225,6 @@
       <h2 class="section-title"><span data-i18n="experience-head-1">My</span> <span class="accent-w" data-i18n="experience-head-2">Experience</span></h2>
       <div class="section-divider"></div>
     </div>
-    <!-- New Presentation Card Layout for Timeline -->
     <div class="experience-card-grid" id="experience-timeline"></div>
   </section>
 
